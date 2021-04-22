@@ -1,0 +1,45 @@
+{
+  "$schema": "./node_modules/@skyux/config/skyuxconfig-schema.json",
+  "name": "skyux-lookup-modals",
+  "mode": "easy",
+  "compileMode": "aot",
+  "plugins": ["@skyux-sdk/builder-plugin-skyux"],
+  "omnibar": {},
+  "params": {
+    "svcid": {
+      "value": "skyux"
+    }
+  },
+  "app": {
+    "theming": {
+      "supportedThemes": ["default", "modern"],
+      "theme": "default"
+    }
+  },
+  "testSettings": {
+    "e2e": {
+      "browserSet": "speedy"
+    },
+    "unit": {
+      "browserSet": "paranoid"
+    }
+  },
+  "pipelineSettings": {
+    "vsts": {
+      "testSettings": {
+        "e2e": {
+          "browserSet": false
+        },
+        "unit": {
+          "browserSet": false
+        }
+      }
+    }
+  },
+  "host": {
+    "url": "https://developer.blackbaud.com",
+    "frameOptions": {
+      "none": true
+    }
+  }
+}

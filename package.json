@@ -1,0 +1,59 @@
+{
+  "name": "@skyux/lookup-modals",
+  "version": "4.0.0",
+  "description": "SKY UX Lookup modals",
+  "scripts": {
+    "build": "skyux build-public-library",
+    "format": "skyux format",
+    "skyux": "skyux",
+    "start": "skyux serve --hmr",
+    "test": "skyux test --coverage library --logFormat none",
+    "test:visual": "skyux e2e --logFormat none"
+  },
+  "keywords": [],
+  "author": "Blackbaud",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackbaud/skyux-lookup-modals.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blackbaud/skyux-lookup-modals/issues"
+  },
+  "homepage": "https://github.com/blackbaud/skyux-lookup-modals#readme",
+  "peerDependencies": {
+    "@angular/common": "^9.1.13",
+    "@angular/core": "^9.1.13",
+    "@skyux/core": "^4.0.0"
+  },
+  "devDependencies": {
+    "@angular/animations": "9.1.13",
+    "@angular/common": "9.1.13",
+    "@angular/compiler": "9.1.13",
+    "@angular/compiler-cli": "9.1.13",
+    "@angular/core": "9.1.13",
+    "@angular/forms": "9.1.13",
+    "@angular/platform-browser": "9.1.13",
+    "@angular/platform-browser-dynamic": "9.1.13",
+    "@angular/router": "9.1.13",
+    "@blackbaud/auth-client": "2.45.0",
+    "@skyux-sdk/builder": "4.8.0",
+    "@skyux-sdk/builder-code-formatter": "4.0.0-rc.0",
+    "@skyux-sdk/builder-plugin-skyux": "4.1.4",
+    "@skyux-sdk/e2e": "4.0.1",
+    "@skyux-sdk/testing": "4.2.3",
+    "@skyux/assets": "4.0.1",
+    "@skyux/config": "4.4.0",
+    "@skyux/core": "4.5.0",
+    "@skyux/http": "4.2.0",
+    "@skyux/i18n": "4.1.0",
+    "@skyux/omnibar-interop": "4.0.1",
+    "@skyux/theme": "4.15.5",
+    "codelyzer": "5.2.2",
+    "rxjs": "6.6.7",
+    "ts-node": "8.3.0",
+    "tslint": "6.1.3",
+    "typescript": "3.8.3",
+    "zone.js": "0.10.3"
+  }
+}
