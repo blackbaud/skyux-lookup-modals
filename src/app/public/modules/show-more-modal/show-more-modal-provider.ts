@@ -9,6 +9,10 @@ import {
 } from '@skyux/core';
 
 import {
+  SkyLookupShowMoreContext
+} from '@skyux/lookup';
+
+import {
   SkyModalService
 } from '@skyux/modals';
 
@@ -20,10 +24,6 @@ import {
   SkyLookupShowMoreModalComponent
 } from './show-more-modal.component';
 
-import {
-  SkyLookupShowMoreModalContext
-} from './types/show-more-modal-context';
-
 @Injectable()
 export class SkyLookupShowMoreModalProvider implements SkyModalProvider {
 
@@ -33,9 +33,9 @@ export class SkyLookupShowMoreModalProvider implements SkyModalProvider {
 
   constructor(private modalService: SkyModalService) {}
 
-  public open(context: SkyLookupShowMoreModalContext) {
+  public open(context: SkyLookupShowMoreContext) {
     const instance = this.modalService.open(SkyLookupShowMoreModalComponent, { providers: [{
-      provide: SkyLookupShowMoreModalContext, useValue: context
+      provide: SkyLookupShowMoreContext, useValue: context
     }]});
 
     this.events['addClick'] = (<SkyLookupShowMoreModalComponent> instance.componentInstance).addClick;

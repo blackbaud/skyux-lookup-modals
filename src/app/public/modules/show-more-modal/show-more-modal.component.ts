@@ -15,7 +15,8 @@ import {
 } from '@skyux/data-manager';
 
 import {
-  SkyLookupSelectMode
+  SkyLookupSelectMode,
+  SkyLookupShowMoreContext
 } from '@skyux/lookup';
 
 import {
@@ -30,10 +31,6 @@ import {
   debounceTime,
   takeUntil
 } from 'rxjs/operators';
-
-import {
-  SkyLookupShowMoreModalContext
-} from './types/show-more-modal-context';
 
 @Component({
   selector: 'skyux-lookup-show-more-modal',
@@ -90,7 +87,7 @@ export class SkyLookupShowMoreModalComponent implements OnDestroy, OnInit {
 
   constructor(
     public modalInstance: SkyModalInstance,
-    public context: SkyLookupShowMoreModalContext,
+    public context: SkyLookupShowMoreContext,
     private changeDetector: ChangeDetectorRef,
     private dataManagerService: SkyDataManagerService
   ) { }
