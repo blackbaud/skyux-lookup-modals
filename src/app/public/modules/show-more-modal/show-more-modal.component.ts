@@ -264,7 +264,7 @@ export class SkyLookupShowMoreModalComponent implements OnDestroy, OnInit {
       if (!item.selected) {
         item.selected = true;
 
-        const index = this.items.indexOf(item).toString();
+        const index = this.items.indexOf(item);
 
         /* Sanity check */
         /* istanbul ignore else */

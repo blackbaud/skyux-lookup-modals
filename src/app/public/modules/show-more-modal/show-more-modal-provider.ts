@@ -39,7 +39,7 @@ export class SkyLookupShowMoreModalProvider implements SkyModalProvider {
     }]});
 
     this.events['addClick'] = (<SkyLookupShowMoreModalComponent> instance.componentInstance).addClick;
-    instance.closed.subscribe((closeArgs) => {
+    instance.closed.subscribe((closeArgs: SkyModalProviderCloseArgs) => {
       this.closeCallback.next(closeArgs);
     });
   }
