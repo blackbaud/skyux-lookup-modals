@@ -372,8 +372,6 @@ describe('show more modal', () => {
       })
     );
 
-
-
     it('should select the correct item when changed from the show all modal',
       fakeAsync(() => {
         component.initialValue = [{ value:
@@ -424,7 +422,6 @@ describe('show more modal', () => {
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
     );
-
 
     it('should select the correct items after existing search text is cleared',
       fakeAsync(() => {

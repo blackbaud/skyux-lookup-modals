@@ -1,10 +1,10 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
   OnDestroy,
-  OnInit,
   Output
 } from '@angular/core';
 
@@ -39,7 +39,7 @@ import {
   providers: [SkyDataManagerService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkyLookupShowMoreModalComponent implements OnDestroy, OnInit {
+export class SkyLookupShowMoreModalComponent implements AfterViewInit, OnDestroy {
 
   /**
    * @internal
@@ -83,7 +83,7 @@ export class SkyLookupShowMoreModalComponent implements OnDestroy, OnInit {
   };
 
   private itemIndex: number = 0;
-  private ngUnsubscribe = new Subject();
+  private ngUnsubscribe = new Subject<void>();
 
   constructor(
     public modalInstance: SkyModalInstance,
@@ -92,7 +92,7 @@ export class SkyLookupShowMoreModalComponent implements OnDestroy, OnInit {
     private dataManagerService: SkyDataManagerService
   ) { }
 
-  public ngOnInit(): void {
+  public ngAfterViewInit(): void {
     this.dataState.searchText = this.context.initialSearch;
     this.dataManagerService.initDataView(this.viewConfig);
 
@@ -104,20 +104,19 @@ export class SkyLookupShowMoreModalComponent implements OnDestroy, OnInit {
       }
     );
 
-    setTimeout(() => {
-      this.addItems();
+    this.addItems();
 
-      this.dataManagerService.getDataStateUpdates(this.viewId).pipe(
-          debounceTime(250),
-          takeUntil(this.ngUnsubscribe)
-        ).subscribe(state => {
+    this.dataManagerService.getDataStateUpdates(this.viewId)
+      .pipe(
+        debounceTime(250),
+        takeUntil(this.ngUnsubscribe)
+      ).subscribe(state => {
         if (this.dataState.searchText !== state.searchText) {
           this.itemIndex = 10;
         }
         this.dataState = state;
         this.updateData();
       });
-    });
   }
 
   public ngOnDestroy(): void {
@@ -132,17 +131,25 @@ export class SkyLookupShowMoreModalComponent implements OnDestroy, OnInit {
   public addItems(): void {
     if (!this.items || this.items.length === 0) {
       let selectedIds: any[] = this.dataState.selectedIds?.slice() || [];
-      const initialIsArray = Array.isArray(this.context.initialValue);
       this.items = this.context.items?.map(item => {
         return {
           value: item,
           selected: false
         };
       });
+
       this.items.forEach(item => {
-        if ((this.isEquivalent(this.context.initialValue, item.value)) ||
-          (initialIsArray && this.context.initialValue
-            .findIndex((initialItem: any) => this.isEquivalent(initialItem.value, item.value)) >= 0)) {
+        const isInitialValue: boolean = this.isEquivalent(this.context.initialValue, item.value);
+
+        const initialIsArray: boolean = Array.isArray(this.context.initialValue);
+        let initialValueContainsItem: boolean;
+
+        if (initialIsArray) {
+          initialValueContainsItem = this.context.initialValue
+            .findIndex((initialItem: any) => this.isEquivalent(initialItem.value, item.value)) >= 0;
+        }
+
+        if (isInitialValue || (initialIsArray && initialValueContainsItem)) {
           item.selected = true;
           const itemIndex = this.items.indexOf(item);
           if (selectedIds.indexOf(itemIndex) < 0) {
@@ -150,6 +157,7 @@ export class SkyLookupShowMoreModalComponent implements OnDestroy, OnInit {
           }
         }
       });
+
       this.dataState.selectedIds = selectedIds;
       this.dataManagerService.updateDataState(this.dataState, this.viewId);
       this.changeDetector.markForCheck();
