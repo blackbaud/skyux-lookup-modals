@@ -7,6 +7,7 @@ import {
 import { SkyModalProviderCloseArgs } from '@skyux/core';
 import { SkyLookupSelectMode, SkyLookupShowMoreContext } from '@skyux/lookup';
 import { SkyModalService } from '@skyux/modals';
+import { Subject } from 'rxjs';
 
 import { SkyLookupShowMoreModalFixturesModule } from './fixtures/show-more-modal-fixtures.module';
 import { SkyShowMoreModalTestComponent } from './fixtures/show-more-modal.component.fixture';
@@ -486,7 +487,9 @@ describe('show more modal', () => {
 
       clickShowMoreMultiple();
 
-      const addButtonSpy = spyOn(component.addEvent, 'emit').and.callThrough();
+      const addEvent: Subject<void> = component.addEvent as Subject<void>;
+
+      const addButtonSpy = spyOn(addEvent, 'next').and.callThrough();
 
       clickShowMoreAddButton();
 

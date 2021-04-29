@@ -1,16 +1,17 @@
-import { Component, EventEmitter, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import {
   SkyModalProviderCloseArgs,
   SkyModalProviderService
 } from '@skyux/core';
 import { SkyLookupSelectMode } from '@skyux/lookup';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'show-more-modal-test',
   templateUrl: './show-more-modal.component.fixture.html'
 })
 export class SkyShowMoreModalTestComponent {
-  public addEvent: EventEmitter<void>;
+  public addEvent: Observable<void>;
   public customTitle: string;
   public descriptorProperty: string = 'name';
   public enabledSearchResultTemplate: TemplateRef<any>;
@@ -95,7 +96,7 @@ export class SkyShowMoreModalTestComponent {
 
     this.addEvent = modalProvider.events['addClick'];
 
-    modalProvider.closeCallback.subscribe((args: SkyModalProviderCloseArgs) => {
+    modalProvider.closed.subscribe((args: SkyModalProviderCloseArgs) => {
       this.returnedValue = args;
     });
   }

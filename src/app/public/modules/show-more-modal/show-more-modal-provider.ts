@@ -1,5 +1,4 @@
 import {
-  EventEmitter,
   Injectable
 } from '@angular/core';
 
@@ -17,6 +16,7 @@ import {
 } from '@skyux/modals';
 
 import {
+  Observable,
   Subject
 } from 'rxjs';
 
@@ -27,9 +27,9 @@ import {
 @Injectable()
 export class SkyLookupShowMoreModalProvider implements SkyModalProvider {
 
-  public closeCallback: Subject<SkyModalProviderCloseArgs> = new Subject();
+  public closed: Subject<SkyModalProviderCloseArgs> = new Subject();
   public type: string = 'lookup-show-more';
-  public events: { [key: string]: EventEmitter<any> } = {};
+  public events: { [key: string]: Observable<any> } = {};
 
   constructor(private modalService: SkyModalService) {}
 
@@ -40,7 +40,7 @@ export class SkyLookupShowMoreModalProvider implements SkyModalProvider {
 
     this.events['addClick'] = (<SkyLookupShowMoreModalComponent> instance.componentInstance).addClick;
     instance.closed.subscribe((closeArgs: SkyModalProviderCloseArgs) => {
-      this.closeCallback.next(closeArgs);
+      this.closed.next(closeArgs);
     });
   }
 }

@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  EventEmitter,
   OnDestroy,
   Output
 } from '@angular/core';
@@ -46,7 +45,7 @@ export class SkyLookupShowMoreModalComponent implements AfterViewInit, OnDestroy
    * Fires when users select the "Add" button
    */
   @Output()
-  public addClick: EventEmitter<void> = new EventEmitter();
+  public addClick: Subject<void> = new Subject();
 
   public items: any[];
 
@@ -125,7 +124,7 @@ export class SkyLookupShowMoreModalComponent implements AfterViewInit, OnDestroy
   }
 
   public addButtonClicked(): void {
-    this.addClick.emit();
+    this.addClick.next();
   }
 
   public addItems(): void {

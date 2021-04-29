@@ -75,7 +75,7 @@ export class SkyShowMoreModalVisualComponent {
       console.log('Add Button Clicked!');
     });
 
-    modalProvider.closeCallback.subscribe((closeArgs) => {
+    modalProvider.closed.subscribe((closeArgs) => {
       if (closeArgs.reason === 'save') {
         console.log('Modal saved with data: ' + closeArgs.data);
       } else {
