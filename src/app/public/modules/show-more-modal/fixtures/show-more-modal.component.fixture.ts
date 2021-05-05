@@ -1,10 +1,21 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
 import {
-  SkyModalProviderCloseArgs,
-  SkyModalProviderService
+  Component,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
+
+import {
+  SkyCoreModalCloseArgs,
+  SkyCoreModalProviderService
 } from '@skyux/core';
-import { SkyLookupSelectMode } from '@skyux/lookup';
-import { Observable } from 'rxjs';
+
+import {
+  SkyLookupSelectMode
+} from '@skyux/lookup';
+
+import {
+  Observable
+} from 'rxjs';
 
 @Component({
   selector: 'show-more-modal-test',
@@ -17,7 +28,7 @@ export class SkyShowMoreModalTestComponent {
   public enabledSearchResultTemplate: TemplateRef<any>;
   public initialSearch: string;
   public initialValue: any[];
-  public returnedValue: SkyModalProviderCloseArgs;
+  public returnedValue: SkyCoreModalCloseArgs;
   public showAddButton: boolean = false;
 
   public people: any[] = [
@@ -47,7 +58,7 @@ export class SkyShowMoreModalTestComponent {
   @ViewChild('customSearchResultTemplate')
   public searchResultTemplate: TemplateRef<any>;
 
-  constructor(private modalProviderService: SkyModalProviderService) {}
+  constructor(private modalProviderService: SkyCoreModalProviderService) {}
 
   public enableSearchResultTemplate(): void {
     this.enabledSearchResultTemplate = this.searchResultTemplate;
@@ -92,11 +103,11 @@ export class SkyShowMoreModalTestComponent {
       }
     }
 
-    modalProvider.open(context);
+    const modalInstance = modalProvider.open({ context: context });
 
-    this.addEvent = modalProvider.events['addClick'];
+    this.addEvent = modalInstance.componentInstance.addClick;
 
-    modalProvider.closed.subscribe((args: SkyModalProviderCloseArgs) => {
+    modalInstance.closed.subscribe((args: SkyCoreModalCloseArgs) => {
       this.returnedValue = args;
     });
   }

@@ -1,7 +1,19 @@
-import { Component } from '@angular/core';
-import { SkyModalProviderService } from '@skyux/core';
-import { SkyLookupSelectMode } from '@skyux/lookup';
-import { SkyThemeService, SkyThemeSettings } from '@skyux/theme';
+import {
+  Component
+} from '@angular/core';
+
+import {
+  SkyCoreModalProviderService
+} from '@skyux/core';
+
+import {
+  SkyLookupSelectMode
+} from '@skyux/lookup';
+
+import {
+  SkyThemeService,
+  SkyThemeSettings
+} from '@skyux/theme';
 
 @Component({
   selector: 'show-more-modal-visual',
@@ -36,9 +48,9 @@ export class SkyShowMoreModalVisualComponent {
   ];
 
   constructor(
-    private modalProviderService: SkyModalProviderService,
+    private modalProviderService: SkyCoreModalProviderService,
     private themeSvc: SkyThemeService
-  ) {}
+  ) { }
 
   public openSingleSelectModal(): void {
     this.openModalInstance(SkyLookupSelectMode.single);
@@ -64,18 +76,21 @@ export class SkyShowMoreModalVisualComponent {
     const modalProvider = this.modalProviderService.getModalForType(
       'lookup-show-more'
     );
-    modalProvider.open({
-      items: this.people,
-      descriptorProperty: 'name',
-      selectMode: selectMode,
-      showAddButton: true
+
+    const modalInstance = modalProvider.open({
+      context: {
+        items: this.people,
+        descriptorProperty: 'name',
+        selectMode: selectMode,
+        showAddButton: true
+      }
     });
 
-    modalProvider.events['addClick'].subscribe(() => {
+    modalInstance.componentInstance.addClick.subscribe(() => {
       console.log('Add Button Clicked!');
     });
 
-    modalProvider.closed.subscribe((closeArgs) => {
+    modalInstance.closed.subscribe((closeArgs) => {
       if (closeArgs.reason === 'save') {
         console.log('Modal saved with data: ' + closeArgs.data);
       } else {

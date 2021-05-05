@@ -4,14 +4,35 @@ import {
   TestBed,
   tick
 } from '@angular/core/testing';
-import { SkyModalProviderCloseArgs } from '@skyux/core';
-import { SkyLookupSelectMode, SkyLookupShowMoreContext } from '@skyux/lookup';
-import { SkyModalService } from '@skyux/modals';
-import { Subject } from 'rxjs';
 
-import { SkyLookupShowMoreModalFixturesModule } from './fixtures/show-more-modal-fixtures.module';
-import { SkyShowMoreModalTestComponent } from './fixtures/show-more-modal.component.fixture';
-import { SkyLookupShowMoreModalComponent } from './show-more-modal.component';
+import {
+  SkyCoreModalCloseArgs
+} from '@skyux/core';
+
+import {
+  SkyLookupSelectMode,
+  SkyLookupShowMoreContext
+} from '@skyux/lookup';
+
+import {
+  SkyModalService
+} from '@skyux/modals';
+
+import {
+  Subject
+} from 'rxjs';
+
+import {
+  SkyLookupShowMoreModalFixturesModule
+} from './fixtures/show-more-modal-fixtures.module';
+
+import {
+  SkyShowMoreModalTestComponent
+} from './fixtures/show-more-modal.component.fixture';
+
+import {
+  SkyLookupShowMoreModalComponent
+} from './show-more-modal.component';
 
 describe('show more modal', () => {
 
@@ -169,7 +190,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [5, 9] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [5, 9] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -186,7 +207,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [9, 5] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [9, 5] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -203,7 +224,7 @@ describe('show more modal', () => {
 
         closeShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'close', data: undefined };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'close', data: undefined };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -220,7 +241,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [9] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [9] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -237,7 +258,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [5, 1] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [5, 1] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -257,7 +278,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [5, 9, 0] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [5, 9, 0] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -274,7 +295,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -291,7 +312,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [11, 12] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [11, 12] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -311,7 +332,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [9] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [9] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -367,7 +388,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [5] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [5] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -384,7 +405,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [5] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [5] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -401,7 +422,7 @@ describe('show more modal', () => {
 
         closeShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'close', data: undefined };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'close', data: undefined };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -418,7 +439,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [1] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [1] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })
@@ -438,7 +459,7 @@ describe('show more modal', () => {
 
         saveShowMoreModal();
 
-        const expectedValue: SkyModalProviderCloseArgs = { reason: 'save', data: [0] };
+        const expectedValue: SkyCoreModalCloseArgs = { reason: 'save', data: [0] };
         expect(component.returnedValue.reason).toEqual(expectedValue.reason);
         expect(component.returnedValue.data).toEqual(expectedValue.data);
       })

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { SkyModalProviderModule } from '@skyux/core';
 import { SkyDocsToolsModule, SkyDocsToolsOptions } from '@skyux/docs-tools';
 import { SkyPageModule } from '@skyux/layout';
 import { SkyAppLinkModule } from '@skyux/router';
@@ -11,7 +10,6 @@ import { SkyLookupShowMoreModalModule } from './public/public_api';
     SkyAppLinkModule,
     SkyDocsToolsModule,
     SkyLookupShowMoreModalModule,
-    SkyModalProviderModule,
     SkyPageModule
   ],
   providers: [
