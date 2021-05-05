@@ -1,0 +1,21 @@
+<button
+  class="sky-btn sky-btn-primary"
+  id="show-more-modal-launcher-single"
+  type="button"
+  (click)="openSingleSelectModal()"
+>
+  Open single select modal
+</button>
+
+<button
+  class="sky-btn sky-btn-primary"
+  id="show-more-modal-launcher-multiple"
+  type="button"
+  (click)="openMultiSelectModal()"
+>
+  Open multi select modal
+</button>
+
+<ng-template let-item="item" #customSearchResultTemplate>
+  {{ item.formal }}
+</ng-template>

@@ -1,1 +1,18 @@
-{}
+{
+  "skyux_lookup_show_more_add": {
+    "_description": "Label for lookup's show more modal add button",
+    "message": "New"
+  },
+  "skyux_lookup_show_more_cancel": {
+    "_description": "Label for lookup's show more modal cancel button",
+    "message": "Cancel"
+  },
+  "skyux_lookup_show_more_no_results": {
+    "_description": "Placeholder text for lookup's show more modal when no results are found",
+    "message": "No matches found"
+  },
+  "skyux_lookup_show_more_select": {
+    "_description": "Label for lookup's show more modal select (save) button",
+    "message": "Select"
+  }
+}

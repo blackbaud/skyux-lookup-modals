@@ -1,0 +1,32 @@
+<div id="show-more-modal-screenshot"></div>
+
+<div class="show-more-modal-screenshot-buttons">
+  <div
+    [ngClass]="{
+      'show-more-modal-screenshot-buttons-hidden': buttonsHidden
+    }"
+  >
+    <sky-docs-demo-control-panel-theme
+      (themeSettingsChange)="themeSettingsChange($event)"
+    ></sky-docs-demo-control-panel-theme>
+    <div>
+      <button
+        class="sky-btn sky-btn-primary"
+        id="show-more-modal-launcher-single"
+        type="button"
+        (click)="openSingleSelectModal()"
+      >
+        Open single select modal
+      </button>
+
+      <button
+        class="sky-btn sky-btn-primary"
+        id="show-more-modal-launcher-multiple"
+        type="button"
+        (click)="openMultiSelectModal()"
+      >
+        Open multi select modal
+      </button>
+    </div>
+  </div>
+</div>
